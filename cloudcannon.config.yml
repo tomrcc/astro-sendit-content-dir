@@ -8,6 +8,8 @@ collections_config:
   posts:
     path: src/content/blog
     url: "/blog/[slug]/"
+    glob: 
+      - "!es/*"
     disable_add_folder: true
     _enabled_editors:
       - content
@@ -30,7 +32,7 @@ collections_config:
       author:
         empty_type: string
   es_posts:
-    path: src/content/es/blog
+    path: src/content/blog/es
     url: "/es/blog/[slug]/"
     disable_add_folder: true
     _enabled_editors:
