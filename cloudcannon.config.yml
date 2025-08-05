@@ -20,21 +20,15 @@ collections_config:
       default:
         name: New Post
         path: schemas/post.md
-  es_posts:
-    path: src/content/es/blog
-    url: "/es/blog/[slug]/"
-    disable_add_folder: true
-    _enabled_editors:
-      - content
-      - visual
-    add_options:
-      - name: Add New Post
-        schema: default
-        icon: post_add
-    schemas:
-      default:
-        name: New Post
-        path: schemas/post.md
+    _inputs:
+      title:
+        empty_type: string
+      image:
+        empty_type: string
+      image_alt:
+        empty_type: string
+      author:
+        empty_type: string
   pages:
     path: src/content/pages
     url: "/[slug]/"
@@ -53,24 +47,11 @@ collections_config:
         new_preview_url: "/"
       paginated_collection:
         path: schemas/paginated-collection.md
-  es_pages:
-    path: src/content/es/pages
-    url: "/es/[slug]/"
-    icon: wysiwyg
-    disable_add_folder: true
-    _enabled_editors:
-      - visual
-    add_options:
-      - name: Add New Page
-        schema: default
-        icon: note_add
-    schemas:
-      default:
-        name: New Page
-        path: schemas/page.md
-        new_preview_url: "/"
-      paginated_collection:
-        path: schemas/paginated-collection.md
+    _inputs:
+      content_blocks:
+        empty_type: array
+    filter:
+      base: strict
   data:
     path: data
     disable_add: true
@@ -78,15 +59,14 @@ collections_config:
     disable_url: true
     icon: data_usage
 
+
 collection_groups:
-  - heading: English
+  - heading: Pages
     collections:
       - pages
-      - blog
-  - heading: Spanish
+  - heading: Blogging
     collections:
-      - es_pages
-      - es_blog
+      - posts
   - heading: Site Settings
     collections:
       - data
@@ -94,6 +74,8 @@ collection_groups:
       - theme_palette
 
 _structures:
+  content_blocks:
+    style: modal
   features:
     values:
       - value:
